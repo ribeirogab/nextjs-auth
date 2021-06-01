@@ -5,17 +5,17 @@ import { useAuth } from '../hooks/auth';
 import styles from '../styles/Home.module.css';
 
 export default function Home() {
-  const {} = useAuth();
-  
+  const { signIn } = useAuth();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  function handleSubmit(event: FormEvent) {
+  async function handleSubmit(event: FormEvent) {
     event.preventDefault();
 
     const data = { email, password };
-    
-    console.log(data);
+
+    await signIn(data);
   }
 
   return (
