@@ -111,7 +111,7 @@ app.post('/refresh', addUserInformationToRequest, (request, response) => {
 
   if (!user) {
     return response
-      .status(401)
+      .status(404)
       .json({ 
         error: true, 
         message: 'User not found.'
@@ -165,4 +165,6 @@ app.get('/me', checkAuthMiddleware, (request, response) => {
   })
 });
 
-app.listen(3333);
+app.listen(3333, () => {
+  console.log('Server is running')
+});
